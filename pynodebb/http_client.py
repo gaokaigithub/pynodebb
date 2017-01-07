@@ -8,7 +8,7 @@ Licensed MIT
 from __future__ import unicode_literals
 
 import requests
-import urlparse
+import urllib
 
 from pynodebb.settings import settings
 
@@ -43,7 +43,7 @@ class HttpClient(object):
 
         # Query the NodeBB instance, extracting the status code and fail reason.
         response = requests.request(
-            method, urlparse.urljoin(self.endpoint, path),
+            method, urllib.parse.urljoin(self.endpoint, path),
             headers=self.headers, data=kwargs
         )
         code, reason = response.status_code, response.reason
